@@ -18,7 +18,6 @@ import IUser from "../interfaces/User";
 export default function Register() {
   const navigate = useNavigate();
   const [form, setForm] = useState<IUser>({
-    id: 0,
     email: "",
     fullname: "",
     password: "",
@@ -32,6 +31,7 @@ export default function Register() {
   }
 
   async function handleRegister(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
     try {
       const response = await API.post("/auth/register", form);
       console.log("register success", response);
